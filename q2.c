@@ -10,7 +10,7 @@
 
 //char tokens[MAX_TOKENS];
 int num_tokens;
-int position = 0;
+int pos = 0;
 char variable_names[MAX_TOKENS][100];
 int variable_values[MAX_TOKENS];
 int variables_initialized[MAX_TOKENS] = {0};
@@ -55,6 +55,9 @@ int main(){
 	for(int i = 0; i<4; i++){
 		printf("%s ", variable_names[i]);
 	}
+	//int position = pos;
+	//if(tokens[pos++]=='r'&&tokens[pos++]=='e'&&tokens[pos++]=='a'&&tokens[pos++]=='d'
+	
 	
 }
 void error(){
@@ -65,24 +68,24 @@ void compile(){
 	
 }
 
-int checkDeclaration(char input[]){
-	int pos = 0;
-	if(input[pos]=='i' && input[++pos] == 'n' && input[++pos] == 't'){
+int checkDeclaration(){
+	//int pos = 0;
+	if(tokens[pos]=='i' && tokens[++pos] == 'n' && tokens[++pos] == 't'){
 		pos++;
 
-		while(input[pos]!=';'){
+		while(tokens[pos]!=';'){
 			char var[100];
 			int i = 0;
-			while(input[pos]!=','){
-				if(input[pos]==';')
+			while(tokens[pos]!=','){
+				if(tokens[pos]==';')
 					break;
-				var[i] = input[pos];
+				var[i] = tokens[pos];
 				pos++;
 				i++;
 			}
 			memcpy(variable_names[position], var, i);
 			position++;
-			if(input[pos]!=';') pos++;
+			if(tokens[pos]!=';') pos++;
 		}
 	}
 	else
